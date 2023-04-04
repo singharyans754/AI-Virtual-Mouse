@@ -7,10 +7,10 @@ The project is designed to work on any computer with a camera, making it easily 
 ## Dependencies -
 Please install all the required dependencies.
 
-openCV - (For image processing and drawing)
-mediapipe - (For Hand Tracking)
-autopy - (For controlling the mouse movement and click)
-numpy
+openCV - (For image processing and drawing).
+mediapipe - (For Hand Tracking).
+autopy - (For controlling the mouse movement and click).
+numpy.
 
 ## Installation
 To use this project, follow the steps below:
