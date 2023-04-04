@@ -4,6 +4,14 @@ The "AI Virtual Mouse Using Hand Gestures" project is a machine learning-based a
 
 The project is designed to work on any computer with a camera, making it easily accessible to anyone interested in exploring the capabilities of computer vision and machine learning. The code for the project is available on a Github repository, making it open-source and available for contributions from the community.
 
+## Dependencies -
+Please install all the required dependencies.
+
+openCV - (For image processing and drawing)
+mediapipe - (For Hand Tracking)
+autopy - (For controlling the mouse movement and click)
+numpy
+
 ## Installation
 To use this project, follow the steps below:
 
@@ -22,7 +30,7 @@ pip install -r requirements.txt
 3. Run the main script:
 
 ```
-python aivirtualmouseproject.py
+aivirtualmouseproject.py
 ```
 
 ## How to Use
