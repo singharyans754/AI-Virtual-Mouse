@@ -3,6 +3,8 @@ import numpy as np
 import HandTrackingModule as htm
 import time
 import autopy
+import os
+
 
 #############################
 wCam, hCam = 640, 480
@@ -54,7 +56,7 @@ while True:
             cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
             plocX, plocY = clocX, clocY
 
-    #8. Both index and middle are up : Clicking mode
+    #8. Both index and middle are up : Left Clicking mode
         if fingers[1]==1 and fingers[2]==1:
 
             #9. Find distance between fingers 
@@ -66,18 +68,30 @@ while True:
                 cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0,255,0), cv2.FILLED)
                 autopy.mouse.click()
 
-     #11. Both index and middle are up : Clicking mode
+     #11. Both index and middle are up : Right Clicking mode
         if fingers[1] == 1 and fingers[2] == 1:
 
 
              #12. Find distance between fingers 
-            length, img, lineInfo = detector.findDistance(8, 4, img)
+            length, img, lineInfo = detector.findDistance(4, 20, img)
             print(length)
             
             #13. Click mouse if distance short
             if length< 40:
                 cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0,255,0), cv2.FILLED)
                 autopy.mouse.click(button=autopy.mouse.Button.RIGHT)
+    
+    #14. Both index and pinky are up: Open A Drive mode
+        if fingers[1] == 1 and fingers[2] == 1:
+        #15. Find distance between fingers
+            length, img, lineInfo = detector.findDistance(4, 16, img)
+            print(length)
+
+        #16. Open A Drive if distance short
+            if length < 40:
+                cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0, 255, 0), cv2.FILLED)
+                os.startfile("A:\\")
+
     
    
     #11. Frame rate
@@ -87,5 +101,9 @@ while True:
     cv2.putText(img, str(int(fps)), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3, (255,0,0),3)
    
     #12. Display
+    
     cv2.imshow("AI Virtual Mouse", img)
-    cv2.waitKey(1)
+    if cv2.waitKey(1)  == 27:
+        break
+cap.release()
+cv2.destroyAllWindows()  
